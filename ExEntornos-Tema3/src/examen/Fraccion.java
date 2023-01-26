@@ -1,4 +1,4 @@
-package fraccion;
+package examen;
 
 // Clase que define una fracción
 public class Fraccion {
@@ -57,7 +57,7 @@ public class Fraccion {
 	}
 
 	// Cálculo del máximo común divisor por el algoritmo de Euclides
-	private int mcd() {
+	private int maxComunDivisor() {
 		int absoluton = Math.abs(num); // valor absoluto del numerador
 		int absolutod = Math.abs(den); // valor absoluto del denominador
 		int aux = 0; //auxiliar añadido en rama PMD
@@ -76,7 +76,7 @@ public class Fraccion {
 
 	// método para simplificar fracciones
 	public void simplificar() {
-		int numero = mcd();
+		int numero = maxComunDivisor();
 		num = num / numero;
 		den = den / numero;
 	}
@@ -92,7 +92,9 @@ public class Fraccion {
 	// suma de fracciones
 	public Fraccion sumar(Fraccion fraccion) {
 		Fraccion aux = new Fraccion();
-		aux.num = num * fraccion.den + den * fraccion.num;
+		int cruce1 = num * fraccion.den;
+		int cruce2 = den * fraccion.num;
+		aux.num = cruce1 + cruce2;
 		aux.den = den * fraccion.den;
 		aux.simplificar();
 		return aux;
